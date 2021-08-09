@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "449376011284",
+    "project_id": "avionav-84452",
+    "storage_bucket": "avionav-84452.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449376011284:android:87d9213e0df771bd781301",
+        "android_client_info": {
+          "package_name": "com.example.avionav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449376011284-km485p0ss9j1euanvqnfdm0vd63e0fbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBce0A7u1Ctw8-w8O-hbd9tQMIbMFCwhG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449376011284-km485p0ss9j1euanvqnfdm0vd63e0fbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

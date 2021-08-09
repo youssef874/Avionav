@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_length">300dp</dimen>
+    <dimen name="spacing_dim">16dp</dimen>
+    <dimen name="no_dim">0dp</dimen>
+</resources>
