@@ -11,10 +11,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.avionav.R
 import com.example.avionav.adapter.PlaneListAdapter
 import com.example.avionav.databinding.FragmentHomeBinding
+import com.example.avionav.model.Plane
 import com.example.avionav.viewModel.HomeViewModel
 
+/**
+ * This class is a ui controller to the home screen
+ */
 class HomeFragment : Fragment() {
 
+    //The layout instance using data binding
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: HomeViewModel by viewModels()
@@ -24,20 +29,21 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
         // Inflate the layout for this fragment
-
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        //declare this fragment as the lifecycle owner fo the layout
         binding.lifecycleOwner = this
+        //Set the viewModel variable in the fragment_home.xml to the viewModel var in this class
         binding.viewModel = viewModel
 
+        //Set the RecycleView adapter
         binding.recycleView.adapter = PlaneListAdapter(PlaneListAdapter.ONClickListener {
             viewModel.displayPlaneInformation(it)
         })
 
         viewModel.navigateToPlaneDetail.observe(viewLifecycleOwner,{
            if (it != null){
-               val action = HomeFragmentDirections.actionHomeFragmentToPlainDetailFragment(it)
-               findNavController().navigate(action)
+               navigateToPlaneDetailFragment(it)
                viewModel.displayPlaneInformationComplete()
            }
 
@@ -45,7 +51,13 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    companion object{
-        const val TAG = "HomeFragment"
+    /**
+     * Navigate to PlaneDetailFragment using navigation component
+     * @param plane: the plane date we sent to destination
+     */
+    private fun navigateToPlaneDetailFragment(plane: Plane){
+        val action = HomeFragmentDirections.actionHomeFragmentToPlainDetailFragment(plane)
+        findNavController().navigate(action)
     }
+
 }

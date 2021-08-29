@@ -17,7 +17,6 @@
     <fragment
         android:id="@+id/plainDetailFragment"
         android:name="com.example.avionav.ui.PlaneDetailFragment"
-        android:label="fragment_plain_detail"
         tools:layout="@layout/fragment_plane_detail" >
         <argument
             android:name="plane"

@@ -8,12 +8,18 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.avionav.databinding.HomeListItemBinding
 import com.example.avionav.model.Plane
-import com.squareup.picasso.Picasso
 
-class PlaneListAdapter(val onClickListener: ONClickListener):
+/**
+ * This class will be the adapter of the home screen list
+ * @param onClickListener: an lambda function get [Plane] as param to invoke it in this class
+ */
+class PlaneListAdapter(private val onClickListener: ONClickListener):
     ListAdapter<Plane,PlaneListAdapter.ListItemViewHolder>(DiffCallback) {
 
-
+    /**
+     * This class represent the list item view holder
+     * @param binding: the list item layout through data binding
+     */
     class ListItemViewHolder(private var binding: HomeListItemBinding)
         : RecyclerView.ViewHolder(binding.root){
             fun bind(plane: Plane){
@@ -22,6 +28,9 @@ class PlaneListAdapter(val onClickListener: ONClickListener):
             }
         }
 
+    /**
+     * This object help recycleView keep updated if the data changed
+     */
     companion object DiffCallback: DiffUtil.ItemCallback<Plane>() {
         override fun areItemsTheSame(oldItem: Plane, newItem: Plane): Boolean {
             return oldItem.id == newItem.id

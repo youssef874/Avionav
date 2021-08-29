@@ -9,24 +9,29 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
+/**
+ * This class is the link between [Repository] and [HomeFragment]
+ */
 class HomeViewModel: ViewModel() {
+    //The database root refernce
     private val database = Firebase.database.reference
 
+    //The lis of all planes
     private var _planes = MutableLiveData<List<Plane>>()
     val plane: LiveData<List<Plane>>
         get() = _planes
 
+    //The selected plane
     private var _navigateToPlaneDetail = MutableLiveData<Plane?>()
     val navigateToPlaneDetail: LiveData<Plane?>
     get() = _navigateToPlaneDetail
 
+    //The lis of all planes in form of [DataSnapshot]
     private val planeSnapshot = Repository(database.child("planesIntro"))
 
     init {
+        //convert planeSnapshot to list of planes
         _planes =(planeSnapshot as LiveData<DataSnapshot>).map {
             val list = ArrayList<Plane>()
             if (it != null){
@@ -44,4 +49,5 @@ class HomeViewModel: ViewModel() {
     fun displayPlaneInformationComplete(){
         _navigateToPlaneDetail.value = null
     }
+
 }

@@ -3,6 +3,9 @@ package com.example.avionav.model
 import android.os.Parcel
 import android.os.Parcelable
 
+/**
+ * This class will represent the kotlin object of planeInfo children in the database
+ */
 data class Plane(
     var id: String? = "",
     var name: String? = "",
