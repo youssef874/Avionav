@@ -14,7 +14,7 @@ import com.google.firebase.ktx.Firebase
  * This class is the link between [Repository] and [HomeFragment]
  */
 class HomeViewModel: ViewModel() {
-    //The database root refernce
+    //The database root reference
     private val database = Firebase.database.reference
 
     //The lis of all planes
